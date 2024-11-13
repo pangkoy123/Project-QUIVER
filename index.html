@@ -7,12 +7,9 @@
     <title>Project Quiver</title>
     <meta name="description" content="Project Quiver - Explore interactive maps and data visualizations on earthquakes, dengue cases, and more.">
     <meta name="keywords" content="Project Quiver, data visualization, earthquake map, dengue map, interactive map">
-    <meta name="author" content="Your Name or Organization">
-</head>
+    <meta name="author" content="Wilmar Francis Mercader">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* Basic Reset */
         * {
@@ -23,35 +20,53 @@
 
         /* Body Styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
         }
 
         /* Header Styling */
         header {
-            background-color: #333;
+            background-color: #006699;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
 
-        /* Header Text Styling */
         header h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 42px;
+            margin-bottom: 5px;
         }
 
         header p {
+            font-size: 20px;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
             font-size: 18px;
-            margin-top: 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
         }
 
         /* Map Container */
         #map-container {
-            padding: 20px;
-            margin-top: 20px;
+            padding: 30px 10%;
+            margin-top: 30px;
+            text-align: center;
         }
 
         /* Footer Styling */
@@ -59,16 +74,37 @@
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 10px;
+            padding: 20px 0;
             position: fixed;
             width: 100%;
             bottom: 0;
         }
 
-        /* Styling the iframe for responsiveness */
+        footer p {
+            font-size: 16px;
+        }
+
+        /* Styling iframe for responsiveness */
         iframe {
-            max-width: 100%;
+            width: 100%;
             height: 600px;
+            border: none;
+        }
+
+        /* Button Styling */
+        .cta-button {
+            background-color: #006699;
+            color: #fff;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #004d66;
         }
     </style>
 </head>
@@ -77,20 +113,29 @@
     <!-- Header Section -->
     <header>
         <h1>Project QUIVER</h1>
-        <p>Quake Understanding through Interactive Visualization and Earthquake Research  </p>
+        <p>Quake Understanding through Interactive Visualization and Earthquake Research</p>
     </header>
+
+    <!-- Navigation Bar Section -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
     <!-- Main Content Section -->
     <main>
         <div id="map-container">
-            <!-- Embedding the map HTML using iframe -->
-            <iframe src="earthquake.html" width="100%" height="600px" frameborder="0"></iframe>
+            <h2>Interactive Earthquake Map</h2>
+            <iframe src="earthquake.html"></iframe>
+            <a href="#learn-more" class="cta-button">Learn More</a>
         </div>
     </main>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+        <p>&copy; 2024 Project Quiver. All rights reserved. | <a href="#contact" style="color: #fff;">Contact Us</a></p>
     </footer>
 </body>
 
