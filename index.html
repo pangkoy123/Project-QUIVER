@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Quiver</title>
+    <title>Project Quiver - Earthquake Heatmap</title>
     <meta name="description" content="Project Quiver - Explore interactive maps and data visualizations on earthquakes, dengue cases, and more.">
     <meta name="keywords" content="Project Quiver, data visualization, earthquake map, dengue map, interactive map">
     <meta name="author" content="Wilmar Francis Mercader">
@@ -71,6 +71,35 @@
             height: 600px;
             border: none;
         }
+
+        /* Form Styling */
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form label {
+            font-size: 16px;
+        }
+
+        form input[type="number"] {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        form button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #006699;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #005580;
+        }
     </style>
 </head>
 
@@ -84,7 +113,18 @@
     <!-- Main Content Section -->
     <main>
         <div id="map-container">
-            <iframe src="earthquake.html"></iframe>
+            <h1>Earthquake Heatmap</h1>
+
+            <!-- Form for year input -->
+            <form action="/" method="post">
+                <label for="year">Enter Year (e.g., 2023): </label>
+                <input type="number" id="year" name="year" min="2000" max="2024" required>
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Map Display -->
+            <h2>Earthquake Data for {{ request.form['year'] if request.method == 'POST' else '2023' }}</h2>
+            <iframe src="{{ url_for('static', filename=map_file) }}"></iframe>
         </div>
     </main>
 
