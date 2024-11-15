@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Quiver</title>
+    <meta name="description" content="Project Quiver - Explore interactive maps and data visualizations on earthquakes.">
+    <meta name="keywords" content="Project Quiver, data visualization, earthquake map, interactive map">
+    <meta name="author" content="Wilmar Francis Mercader">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Light and Dark Mode */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --header-bg-color: #006699;
+            --footer-bg-color: #333;
+            --button-bg-color: #006699;
+            --button-text-color: #fff;
+        }
+
+        .dark-mode {
+            --bg-color: #333;
+            --text-color: #f8f9fa;
+            --header-bg-color: #1a1a1a;
+            --footer-bg-color: #1a1a1a;
+            --button-bg-color: #444;
+            --button-text-color: #f8f9fa;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: var(--header-bg-color);
+            color: var(--button-text-color);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 20px;
+        }
+
+        /* Map Container */
+        #map-container {
+            padding: 30px 10%;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--footer-bg-color);
+            color: var(--button-text-color);
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        footer p {
+            font-size: 16px;
+        }
+
+        /* Styling iframe for responsiveness */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        /* Form styling */
+        form {
+            margin: 20px 0;
+        }
+
+        /* Toggle button styling */
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .toggle-button {
+            background-color: var(--button-bg-color);
+            color: var(--button-text-color);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
+
+    <script>
+        // Function to toggle between light and dark modes
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function loadMap() {
+            const year = document.getElementById("year").value;
+            const mapIframe = document.getElementById("map-frame");
+
+            // Set the source based on the selected year
+            if (year === "2022") {
+                mapIframe.src = "earthquake_map_2022.html";
+            } else if (year === "2023") {
+                mapIframe.src = "earthquake_map_2023.html";
+            } else {
+                mapIframe.src = "earthquake.html"; // Default map
+            }
+        }
+
+        // Load the default map on page load
+        window.onload = function() {
+            loadMap();
+        };
+    </script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Project QUIVER</h1>
+        <p>Quake Understanding through Interactive Visualization and Earthquake Research</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Dark Mode Toggle Button -->
+        <div class="toggle-container">
+            <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        </div>
+
+        <!-- Form to select the year -->
+        <div id="map-container">
+            <form onsubmit="event.preventDefault(); loadMap();">
+                <label for="year">Select Year: </label>
+                <select id="year" name="year">
+                    <option value="">Show All</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+                <button type="submit" class="toggle-button">Filter</button>
+            </form>
+
+            <!-- Iframe to display the map -->
+            <iframe id="map-frame" src="earthquake.html"></iframe>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Project Quiver. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
